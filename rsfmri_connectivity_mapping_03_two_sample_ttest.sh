@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# This script carries out unpaired t-test of global or local connectivity maps. 
+# This script carries out unpaired t-test of global or local connectivity maps.
 #
-# GroupA and groupB are the group names (for example: KO and WT) and they have 
+# GroupA and groupB are the group names (for example: KO and WT) and they have
 # to be part of the the filenames. If you set groupA to experimental group and
-# groupB to control group (highly recommended) then positive values would mean 
-# hyper-connectivity in the experimental group with respect to control group. 
-# Accordingly, negative values would mean hypo-connectivity in the experimental 
-# group with respect to control group. 
+# groupB to control group (highly recommended) then positive values would mean
+# hyper-connectivity in the experimental group with respect to control group.
+# Accordingly, negative values would mean hypo-connectivity in the experimental
+# group with respect to control group.
 #
 # The main output of the code is the group_Tstat.nii.gz that is the result of
 # unpaired t-test. This code also outputs one sample Tstat.nii.gz and mean.nii.gz
@@ -15,7 +15,7 @@
 #
 # -----------------------------------------------------------
 # Script written by Marco Pagani
-# Functional Neuroimaging Lab, 
+# Functional Neuroimaging Lab,
 # Istituto Italiano di Tecnologia, Rovereto
 # (2017)
 # -----------------------------------------------------------
@@ -67,3 +67,7 @@ mkdir $two_sample
 
 rm $two_sample/stats.nii.gz
 
+mkdir 04_groups_log
+
+echo $connectivity_maps_path/*_${groupA}_*.nii.gz| tr " " "\n" > 04_groups_log/tslist_${groupA}.txt
+echo $connectivity_maps_path/*_${groupB}_*.nii.gz | tr " " "\n" > 04_groups_log/tslist_${groupB}.txt
